@@ -12,7 +12,7 @@ AESD_ASSIGNMENTS_SITE_METHOD = git
 
 
 define AESD_ASSIGNMENTS_BUILD_CMDS
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D) all
+	$(MAKE) $(TARGET_CONFIGURE_OPTS) CROSS_COMPILE=$(TARGET_CROSS) -C  $(@D) all
 endef
 
 #TODO: Add required executables or scripts below

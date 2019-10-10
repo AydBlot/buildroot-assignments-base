@@ -6,8 +6,8 @@
 ##############################################################
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-AESD_ASSIGNMENTS_VERSION = 5f200274eec2729466004ef285de6d600ff8ed13
-AESD_ASSIGNMENTS_SITE = https://github.com/cu-ecen-5013/aesd-assignments-3-and-later-shykn1
+AESD_ASSIGNMENTS_VERSION = 844f7b8526affd183a37fcec230a44aebc672c59
+AESD_ASSIGNMENTS_SITE = https://github.com/cu-ecen-5013/aesd-assignments-3-and-later-shykn1.git
 AESD_ASSIGNMENTS_SITE_METHOD = git
 
 
@@ -20,6 +20,8 @@ define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 $(@D)/writer $(TARGET_DIR)/bin
 	$(INSTALL) -m 0755 $(@D)/finder.sh $(TARGET_DIR)/bin
 	$(INSTALL) -m 0755 $(@D)/tester.sh $(TARGET_DIR)/bin
+	$(INSTALL) -m 0755 $(@D)/server/aesdsocket $(TARGET_DIR)/usr/bin
+	$(INSTALL) -m 0755 $(@D)/start_stop_daemon.sh $(TARGET_DIR)/etc/init.d/S99aesdsocket
 endef
 
 

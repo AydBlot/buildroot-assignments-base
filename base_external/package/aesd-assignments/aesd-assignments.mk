@@ -7,7 +7,7 @@
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
 AESD_ASSIGNMENTS_VERSION = e6d6e7cd9d43439610056c0cd5cce731016177cf
-AESD_ASSIGNMENTS_SITE = https://github.com/cu-ecen-5013/aesd-assignments-3-and-later-shykn1.git
+AESD_ASSIGNMENTS_SITE = https://github.com/cu-ecen-5013/aesd-assignments-3-and-later-shykn1
 AESD_ASSIGNMENTS_SITE_METHOD = git
 
 

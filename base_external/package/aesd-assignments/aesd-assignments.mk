@@ -7,7 +7,7 @@
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
 AESD_ASSIGNMENTS_VERSION = c720306388071083ab8b39cdcabce7689102c502
-AESD_ASSIGNMENTS_SITE = http://github.com/cu-ecen-5013/assignment-8-char-driver-and-multithreading-shykn1.git
+AESD_ASSIGNMENTS_SITE =https://github.com/cu-ecen-5013/aesd-assignments-3-and-later-shykn1.git
 AESD_ASSIGNMENTS_SITE_METHOD = git
 
 

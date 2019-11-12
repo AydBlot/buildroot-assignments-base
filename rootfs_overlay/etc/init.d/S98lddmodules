@@ -6,7 +6,7 @@ start)
 echo "Starting init script for Module Loading"
 start-stop-daemon -S -n init -a /bin/scull_load -- /lib/modules/4.19.16/extra/scull.ko
 start-stop-daemon -S -n init -a /bin/module_load -- /lib/modules/4.19.16/extra/faulty.ko  
-start-stop-daemon -S -n init -a /bin/aesdchar_load
+start-stop-daemon -S -n init -a /bin/aesdchar_load_qemu
 modprobe hello
 ;;
 stop)

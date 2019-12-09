@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+import posix_ipc
+
+# Create the message queue.
+mq = posix_ipc.MessageQueue("/my_mq", posix_ipc.O_CREX)
+while(1):
+    try:
+        instr = mq.receive(0)
+        print('receive:')
+        print(type(instr))
+        print(type(instr[0]))
+        for i in instr[0]:
+            print(i)
+    except posix_ipc.BusyError:
+        pass
+    except KeyboardInterrupt:
+        print('handle the exit')
+        mq.close()
+        mq.unlink()

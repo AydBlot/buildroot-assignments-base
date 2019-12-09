@@ -3,6 +3,7 @@
 import sys
 import dbus, dbus.mainloop.glib
 import gobject as GObject
+import posix_ipc
 from example_advertisement import Advertisement
 from example_advertisement import register_ad_cb, register_ad_error_cb
 from example_gatt_server import Service, Characteristic
@@ -18,7 +19,8 @@ COMMAND_NOTIFY_CHARACTERISTIC_UUID =  '6e400002-b5a3-f393-e0a9-e50e24dcca9e'
 
 LOCAL_NAME =                   'RaspberryPi3_BLE_Controller'
 mainloop = None
- 
+# Create the message queue.
+mq = posix_ipc.MessageQueue("/my_mq")
 class NotifyCharacteristic(Characteristic):
     def __init__(self, bus, index, service):
         Characteristic.__init__(
@@ -26,15 +28,23 @@ class NotifyCharacteristic(Characteristic):
                 COMMAND_NOTIFY_CHARACTERISTIC_UUID,
                 ['notify', 'read'],
                 service)
-        self.value =[0]*7
+        self.value =[0]*3
         self.notifying = False
         GObject.timeout_add(10, self.sendcommand)
     
     def sendcommand(self):
+        global mq
         if(not self.notifying ):
             return True
-        for i in range(len(self.value)):
-            self.value[i] = self.value[i] +i;
+        try:
+            inmesg = mq.receive(0)
+            #print(hex(inmesg))
+            for i in range(len(inmesg[0])):
+                self.value[i] = inmesg[0][i]
+        except posix_ipc.BusyError:
+            pass
+        #or i in range(len(self.value)):
+        #   self.value[i] = self.value[i] +i;
         #print('notifying now',self.value)
         self.notify_command()
         return True
@@ -152,6 +162,7 @@ def main():
     except KeyboardInterrupt:
         adv.Release()
         mainloop.quit()
+        mq.close()
  
 if __name__ == '__main__':
     main()

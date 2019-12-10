@@ -28,7 +28,7 @@ class NotifyCharacteristic(Characteristic):
                 COMMAND_NOTIFY_CHARACTERISTIC_UUID,
                 ['notify', 'read'],
                 service)
-        self.value =[0]*3
+        self.value =[0]*4
         self.notifying = False
         GObject.timeout_add(10, self.sendcommand)
     

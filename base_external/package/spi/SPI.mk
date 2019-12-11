@@ -21,7 +21,7 @@ endef
 
 #TODO: Add required executables or scripts below
 define SPI_INSTALL_TARGET_CMDS
-	$(INSTALL) -m 0755 $(@D)/controller $(TARGET_DIR)/bin
+	$(INSTALL) -m 0755 $(@D)/controller $(TARGET_DIR)/
 endef
 
 

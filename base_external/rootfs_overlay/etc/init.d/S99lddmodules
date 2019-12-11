@@ -12,6 +12,7 @@ modprobe hci_uart
 hciattach /dev/ttyS0 bcm43xx 115200 noflow -
 hciconfig hic0 up
 /usr/libexec/bluetooth/bluetoothd -E &
+/root/GATT_Advertise
 ;;
 stop)
 echo "Removing user modules"
